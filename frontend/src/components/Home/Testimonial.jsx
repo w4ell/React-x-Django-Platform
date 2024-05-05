@@ -11,7 +11,7 @@ const Testimonial = () => {
       <div className="max-w-6xl px-5 mx-auto mt-32 text-center">
         {/* Heading */}
         <h2 className="text-4xl font-bold text-center">
-          What's Different About Manage?
+        Some user opinions
         </h2>
         {/* Testimonials Container */}
         <div className="flex flex-col mt-24 md:flex-row md:space-x-6">
@@ -20,9 +20,9 @@ const Testimonial = () => {
             <img src={avatarAnisha} className="w-16 -mt-14" alt="" />
             <h5 className="text-lg font-bold">Anisha Li</h5>
             <p className="text-sm text-darkGrayishBlue">
-              “Manage has supercharged our team's workflow. The ability to
-              maintain visibility on larger milestones at all times keeps
-              everyone motivated.”
+              “Infinite Analysis has revolutionized how I visualize my data. I can import 
+              my own data and get customized analyses in just a few clicks. It has really 
+              helped me make more informed decisions for my business.”
             </p>
           </div>
 
@@ -31,9 +31,9 @@ const Testimonial = () => {
             <img src={avatarAli} className="w-16 -mt-14" alt="" />
             <h5 className="text-lg font-bold">Ali Bravo</h5>
             <p className="text-sm text-darkGrayishBlue">
-              “We have been able to cancel so many other subscriptions since
-              using Manage. There is no more cross-channel confusion and
-              everyone is much more focused.”
+              “Je suis impressionné par la précision des prévisions fournies par Infinite Analysis. En utilisant l'historique de mes données, 
+              j'ai pu anticiper les tendances futures et ajuster ma stratégie en conséquence. 
+              C'est un outil puissant pour la planification stratégique.”
             </p>
           </div>
 
@@ -42,9 +42,9 @@ const Testimonial = () => {
             <img src={avatarRichard} className="w-16 -mt-14" alt="" />
             <h5 className="text-lg font-bold">Richard Watts</h5>
             <p className="text-sm text-darkGrayishBlue">
-              “Manage has supercharged our team's workflow. The ability to
-              maintain visibility on larger milestones at all times keeps
-              everyone motivated.”
+              “L'interface conviviale d'Infinite Analysis en fait un plaisir à utiliser. Même sans compétences techniques avancées,
+               j'ai pu importer mes données et générer des analyses en un rien de temps. 
+               C'est un outil essentiel pour toute équipe souhaitant optimiser sa productivité”
             </p>
           </div>
         </div>

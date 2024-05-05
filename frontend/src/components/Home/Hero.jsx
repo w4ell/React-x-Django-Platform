@@ -13,8 +13,7 @@ const Hero = () => {
            Welcome to Infinite Analysis ! 
           </h1>
           <p className="max-w-sm text-center text-darkGrayishBlue md:text-left">
-          Explorez vos données personnelles de manière personnalisée et découvrez de nouvelles perspectives en prévoyant des données liées à votre ensemble.
-          </p>
+          Explore your personal data in a personalized way and discover new insights by forecasting data related to your whole.          </p>
           <div className="flex justify-center md:justify-start">
             <Link
               to="/register"

@@ -155,7 +155,7 @@ SIMPLE_JWT = {
 }
 
 DOMAIN = 'localhost:5173'
-SITE_NAME = 'SMARTSKILLS'
+SITE_NAME = 'Infinite Analysis'
 
 DJOSER = {
     
