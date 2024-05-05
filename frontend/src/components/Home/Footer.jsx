@@ -16,7 +16,7 @@ const Footer = () => {
         {/* Logo and social links container */}
         <div className="flex flex-col-reverse items-center justify-between space-y-12 md:flex-col md:space-y-0 md:items-start">
           <div className="mx-auto my-6 text-center text-white md:hidden">
-            Copyright © 2022, All Rights Reserved
+            Copyright © 2024, All Rights Reserved
           </div>
           {/* Logo */}
           <div>
@@ -24,7 +24,7 @@ const Footer = () => {
               to="/"
               className="items-center gap-3 flex text-xl font-extrabold tracking-tight text-[#F25E3D]"
             >
-              <SiShopware size={30} /> <span>Data visualization</span>
+              <SiShopware size={30} /> <span>Infinite Analysis</span>
             </Link>
           </div>
           {/* Social Links Container */}

@@ -17,7 +17,7 @@ const Navbar = () => {
             to="/"
             className="items-center gap-3 flex text-xl font-extrabold tracking-tight text-[#F25E3D]"
           >
-            <SiShopware size={30} /> <span>Data visualization</span>
+            <SiShopware size={30} /> <span>Infinite Analysis</span>
           </Link>
         </div>
         {/* Menu Items */}
