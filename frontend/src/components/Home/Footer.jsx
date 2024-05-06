@@ -58,11 +58,12 @@ const Footer = () => {
               Home
             </Link>
             <Link to="#" className="hover:text-[#F25E3D]">
-              Pricing
+              about us
             </Link>
             <Link to="#" className="hover:text-[#F25E3D]">
-              Products
+              contact
             </Link>
+            {/*
             <Link to="#" className="hover:text-[#F25E3D]">
               About
             </Link>
@@ -76,7 +77,7 @@ const Footer = () => {
             </Link>
             <Link to="#" className="hover:text-[#F25E3D]">
               Privacy Policy
-            </Link>
+            </Link>*/}
           </div>
         </div>
 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import companyLogo from "../../assets/images/logo.svg";
 import { SiShopware } from "react-icons/si";
 
+
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -25,18 +26,19 @@ const Navbar = () => {
           <Link to="/" className="hover:text-gray-500">
             Home
           </Link>
-          <Link to="#" className="hover:text-gray-500">
-            Product
+          <Link to="#features" className="hover:text-gray-500">
+            about us
           </Link>
           <Link to="#" className="hover:text-gray-500">
-            About Us
+            contact
           </Link>
+          {/*
           <Link to="#" className="hover:text-gray-500">
             Careers
           </Link>
           <Link to="#" className="hover:text-gray-500">
             Community
-          </Link>
+          </Link>*/}
         </div>
         {/* Button */}
         <Link
@@ -70,11 +72,13 @@ const Navbar = () => {
               : "absolute flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-6 right-6 drop-shadow-md"
           }
         >
-          <Link to="#">Pricing</Link>
-          <Link to="#">Product</Link>
-          <Link to="#">About Us</Link>
+          <Link to="#">home</Link>
+          <Link to="#">about us</Link>
+          <Link to="#">contact</Link>
+          {/*
           <Link to="#">Careers</Link>
           <Link to="#">Community</Link>
+        */}
         </div>
       </div>
     </nav>
