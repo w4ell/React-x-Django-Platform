@@ -120,6 +120,18 @@ export const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    GetUsersRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    GetUsersSuccess: (state, action) => {
+      state.loading = false;
+      state.error = null;
+    },
+    GetUsersFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 

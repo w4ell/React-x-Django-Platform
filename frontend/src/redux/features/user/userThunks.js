@@ -167,3 +167,21 @@ export const updateUser =
       dispatch(userActions.UpdateUserFail(error.message));
     }
   };
+
+export const adminGetUsers = () => async (dispatch) => {
+  try {
+    dispatch(userActions.GetUsersRequest());
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+        Accept: "application/json",
+      },
+    };
+    const { data } = await axios.get(`${server}/api/admin/users/`, config);
+    dispatch(userActions.GetUsersSuccess());
+    return data;
+  } catch (error) {
+    dispatch(userActions.GetUsersFail(error.message));
+  }
+};
