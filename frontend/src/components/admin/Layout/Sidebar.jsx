@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SiShopware } from "react-icons/si";
 import { MdOutlineCancel, MdDashboard, MdManageAccounts } from "react-icons/md";
+import { FaUsers } from "react-icons/fa6";
 
 import { useStateContext } from "../../../context/ContextProvider";
 export const links = [
@@ -12,6 +13,11 @@ export const links = [
         name: "Dashboard",
         path: "admin-dashboard",
         icon: <MdDashboard />,
+      },
+      {
+        name: "Users List",
+        path: "admin-users",
+        icon: <FaUsers />,
       },
     ],
   },

@@ -23,6 +23,8 @@ import { Home, Login, Register, ActivationPage } from "./pages";
 import {
   AdminDashboard,
   AdminLayout,
+  AdminUsersList,
+  AdminUserDetails,
   AdminProfileSettings,
 } from "./pages/admin";
 
@@ -93,6 +95,34 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard",
         element: <AdminDashboard />,
+      },
+    ],
+  },
+  {
+    path: "/admin-users",
+    element: (
+      <ProtectedAdminRoute>
+        <AdminLayout />
+      </ProtectedAdminRoute>
+    ),
+    children: [
+      {
+        path: "/admin-users",
+        element: <AdminUsersList />,
+      },
+    ],
+  },
+  {
+    path: "/admin-users/user/:id",
+    element: (
+      <ProtectedAdminRoute>
+        <AdminLayout />
+      </ProtectedAdminRoute>
+    ),
+    children: [
+      {
+        path: "/admin-users/user/:id",
+        element: <AdminUserDetails />,
       },
     ],
   },
