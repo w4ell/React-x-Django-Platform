@@ -24,6 +24,7 @@ import {
   AdminDashboard,
   AdminLayout,
   AdminUsersList,
+  AdminUserDetails,
   AdminProfileSettings,
 } from "./pages/admin";
 
@@ -108,6 +109,20 @@ const router = createBrowserRouter([
       {
         path: "/admin-users",
         element: <AdminUsersList />,
+      },
+    ],
+  },
+  {
+    path: "/admin-users/user/:id",
+    element: (
+      <ProtectedAdminRoute>
+        <AdminLayout />
+      </ProtectedAdminRoute>
+    ),
+    children: [
+      {
+        path: "/admin-users/user/:id",
+        element: <AdminUserDetails />,
       },
     ],
   },

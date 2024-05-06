@@ -185,3 +185,82 @@ export const adminGetUsers = () => async (dispatch) => {
     dispatch(userActions.GetUsersFail(error.message));
   }
 };
+
+export const adminGetUser = (id) => async (dispatch) => {
+  try {
+    dispatch(userActions.GetUserRequest());
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+        Accept: "application/json",
+      },
+    };
+    const { data } = await axios.get(`${server}/api/admin/user/${id}/`, config);
+    dispatch(userActions.GetUserSuccess());
+    return data;
+  } catch (error) {
+    dispatch(userActions.GetUserFail(error.message));
+  }
+};
+
+export const adminUpdateUser =
+  (id, email, full_name, birth_date) => async (dispatch) => {
+    try {
+      dispatch(userActions.UpdateUserRequest());
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+          Accept: "application/json",
+        },
+      };
+      const body = JSON.stringify({ email, full_name, birth_date });
+      await axios
+        .put(`${server}/api/admin/user/${id}/`, body, config)
+        .then((res) => {
+          dispatch(userActions.UpdateUserSuccess());
+        });
+    } catch (error) {
+      dispatch(userActions.UpdateUserFail(error.message));
+    }
+  };
+
+export const adminMakeUserAdmin = (id) => async (dispatch) => {
+  try {
+    dispatch(userActions.MakeUserAdminRequest());
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+      },
+    };
+    await axios
+      .put(`${server}/api/admin/user/${id}/set-admin/`, {}, config)
+      .then((res) => {
+        dispatch(userActions.MakeUserAdminSuccess());
+      });
+  } catch (error) {
+    dispatch(userActions.MakeUserAdminFail(error.message));
+  }
+};
+
+export const adminDeleteUser = (id) => async (dispatch) => {
+  try {
+    dispatch(userActions.DeleteUserRequest());
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+        Accept: "application/json",
+      },
+    };
+    await axios
+      .delete(`${server}/api/admin/user/${id}/delete/`, config)
+      .then((res) => {
+        dispatch(userActions.DeleteUserSuccess());
+      });
+  } catch (error) {
+    dispatch(userActions.DeleteUserFail(error.message));
+  }
+};

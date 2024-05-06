@@ -29,6 +29,7 @@ function AdminUsersList() {
     {
       name: "ID",
       selector: (row) => row.id,
+      sortable: true,
     },
     {
       name: "Name",
@@ -38,6 +39,12 @@ function AdminUsersList() {
     {
       name: "Email",
       selector: (row) => row.email,
+    },
+    {
+      name: "Admin",
+      selector: (row) => row.is_admin,
+      cell: (row) => (row.is_admin ? "Yes" : "No"),
+      sortable: true,
     },
     {
       name: "",
@@ -58,6 +65,7 @@ function AdminUsersList() {
     },
   ];
   const data = users;
+  console.log(data);
   const [records, setRecords] = useState(data);
   const handleFilter = (e) => {
     const newData = data.filter((row) => {

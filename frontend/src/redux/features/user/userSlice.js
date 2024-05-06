@@ -132,6 +132,54 @@ export const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    GetUserRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    GetUserSuccess: (state, action) => {
+      state.loading = false;
+      state.error = null;
+    },
+    GetUserFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    UpdateUserRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    UpdateUserSuccess: (state, action) => {
+      state.loading = false;
+      state.error = null;
+    },
+    UpdateUserFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    MakeUserAdminRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    MakeUserAdminSuccess: (state, action) => {
+      state.loading = false;
+      state.error = null;
+    },
+    MakeUserAdminFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    DeleteUserRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    DeleteUserSuccess: (state, action) => {
+      state.loading = false;
+      state.error = null;
+    },
+    DeleteUserFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
