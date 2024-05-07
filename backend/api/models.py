@@ -9,7 +9,7 @@ class UserAccountManager(BaseUserManager):
         email = self.normalize_email(email)
         user = self.model(email=email, full_name=full_name, birth_date=birth_date)
         user.set_password(password)
-        user.save()
+        user.save() #dans la bd
 
         return user
 
@@ -20,12 +20,12 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_admin = models.BooleanField(default=False)
     birth_date = models.DateField(null=True)
     
-    objects = UserAccountManager()
+    objects = UserAccountManager() #une instance qui signifie que les méthodes définies dans UserAccountManager seront disponibles pour les instances de ce modèle.
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['full_name', 'is_admin', 'birth_date']
 
-    def get_full_name(self):
+    def get_full_name(self): 
         return self.full_name
     
     def get_short_name(self):
