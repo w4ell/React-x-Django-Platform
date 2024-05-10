@@ -51,7 +51,7 @@ const Testimonial = () => {
         {/* Button */}
         <div className="my-16">
           <Link
-            to="#"
+            to="/register"
             className="p-3 px-6 pt-2 text-white bg-[#F25E3D] rounded-full baseline hover:bg-[#f07c62]"
           >
             Get Started

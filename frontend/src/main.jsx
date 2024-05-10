@@ -26,6 +26,7 @@ import {
   AdminUsersList,
   AdminUserDetails,
   AdminProfileSettings,
+  
 } from "./pages/admin";
 
 const router = createBrowserRouter([
@@ -69,6 +70,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+ 
   {
     path: "/profile",
     element: (
@@ -98,6 +100,7 @@ const router = createBrowserRouter([
       },
     ],
   },
+ 
   {
     path: "/admin-users",
     element: (

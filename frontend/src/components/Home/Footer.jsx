@@ -63,26 +63,12 @@ const Footer = () => {
             <Link to="#" className="hover:text-[#F25E3D]">
               contact
             </Link>
-            {/*
-            <Link to="#" className="hover:text-[#F25E3D]">
-              About
-            </Link>
-          </div>
-          <div className="flex flex-col space-y-3 text-white">
-            <Link to="#" className="hover:text-[#F25E3D]">
-              Careers
-            </Link>
-            <Link to="#" className="hover:text-[#F25E3D]">
-              Community
-            </Link>
-            <Link to="#" className="hover:text-[#F25E3D]">
-              Privacy Policy
-            </Link>*/}
+         
           </div>
         </div>
 
         {/* Input Container */}
-        <div className="flex flex-col justify-between">
+       {/* <div className="flex flex-col justify-between">
           <form>
             <div className="flex space-x-3">
               <input
@@ -98,7 +84,7 @@ const Footer = () => {
           <div className="hidden text-white md:block">
             Copyright © 2024, All Rights Reserved
           </div>
-        </div>
+  </div> */}
       </div>
     </div>
   );
