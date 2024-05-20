@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SiShopware } from "react-icons/si";
 import { MdOutlineCancel, MdDashboard, MdManageAccounts } from "react-icons/md";
-
+import companyLogo from "../../../assets/images/logo1.png";
 import { useStateContext } from "../../../context/ContextProvider";
 export const links = [
   {
@@ -51,7 +51,7 @@ const Sidebar = () => {
               onClick={handleCloseSideBar}
               className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
             >
-              <SiShopware /> <span>Data visualization</span>
+              <img className="w-[50px] h-[50px]"src={companyLogo}/> <span>Infinite Analaysis</span>
             </Link>
             <button
               type="button"

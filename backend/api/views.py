@@ -1,6 +1,6 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status, generics
+from rest_framework.views import APIView #pour créer des vues API personnalisées(Get,Put..)
+from rest_framework.response import Response #pour renvoyer des réponses HTTP à partir des vues API
+from rest_framework import status, generics #generics fournit des vues API génériques préconstruites pour effectuer des opérations CRUD
 from .serializers import UserProfileUpdateSerializer, UserSerializer
 from .models import UserAccount
 from .permissions import IsAdminCheck
@@ -59,4 +59,4 @@ class AdminUserDeleteView(generics.DestroyAPIView):
         instance = self.get_object()
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
+        

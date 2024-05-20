@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import companyLogo from "../../assets/images/logo.svg";
+import companyLogo from "../../assets/images/logo1.png";
 import { SiShopware } from "react-icons/si";
 
 
@@ -18,7 +18,7 @@ const Navbar = () => {
             to="/"
             className="items-center gap-3 flex text-xl font-extrabold tracking-tight text-[#F25E3D]"
           >
-            <SiShopware size={30} /> <span>Infinite Analysis</span>
+            <img className="w-[50px] h-[50px]"src={companyLogo}/> <span>Infinite Analysis</span>
           </Link>
         </div>
         {/* Menu Items */}
