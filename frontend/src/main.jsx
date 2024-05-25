@@ -15,6 +15,8 @@ import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 import {
   Layout,
   Dashboard,
+  InsertData,
+  ChartsView,
   ProfileSettings,
   PasswordReset,
   PasswordResetConfirm,
@@ -66,6 +68,34 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+    ],
+  },
+  {
+    path: "/insert-data",
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "/insert-data",
+        element: <InsertData />,
+      },
+    ],
+  },
+  {
+    path: "/charts-view",
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
+    children: [
+      {
+        path: "/charts-view",
+        element: <ChartsView />,
       },
     ],
   },

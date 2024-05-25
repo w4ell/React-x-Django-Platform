@@ -155,3 +155,7 @@ td {
 .open .hamburger-bottom {
   transform: rotate(-45deg) translateY(6px) translate(-6px);
 }
+
+.stat-card {
+  @apply flex flex-col h-[250px] w-[275px] items-center justify-center rounded-lg border-4 shadow-md;
+}

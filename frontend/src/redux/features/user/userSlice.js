@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   currentUser: null,
+  charts: null,
   isAuthenticated: false,
   isAdminAuthenticated: false,
   loading: false,
@@ -179,6 +180,35 @@ export const userSlice = createSlice({
     DeleteUserFail: (state, action) => {
       state.loading = false;
       state.error = action.payload;
+    },
+    UploadFileRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    UploadFileSuccess: (state, action) => {
+      state.loading = false;
+      state.error = null;
+      state.charts = action.payload;
+    },
+    UploadFileFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    ConnectDatabaseRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    ConnectDatabaseSuccess: (state, action) => {
+      state.loading = false;
+      state.error = null;
+      state.charts = action.payload;
+    },
+    ConnectDatabaseFail: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+    ResetCharts: (state) => {
+      state.charts = null;
     },
   },
 });

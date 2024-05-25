@@ -2,16 +2,33 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SiShopware } from "react-icons/si";
 import { MdOutlineCancel, MdDashboard, MdManageAccounts } from "react-icons/md";
+import { AiFillDatabase } from "react-icons/ai";
+import { IoBarChartSharp } from "react-icons/io5";
 
 import { useStateContext } from "../../../context/ContextProvider";
 export const links = [
   {
-    title: "Dashboard",
+    title: "",
     links: [
       {
         name: "Dashboard",
         path: "dashboard",
         icon: <MdDashboard />,
+      },
+    ],
+  },
+  {
+    title: "Data visualization",
+    links: [
+      {
+        name: "Insert Data",
+        path: "insert-data",
+        icon: <AiFillDatabase />,
+      },
+      {
+        name: "Charts",
+        path: "charts-view",
+        icon: <IoBarChartSharp />,
       },
     ],
   },

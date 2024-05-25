@@ -65,7 +65,6 @@ function AdminUsersList() {
     },
   ];
   const data = users;
-  console.log(data);
   const [records, setRecords] = useState(data);
   const handleFilter = (e) => {
     const newData = data.filter((row) => {
@@ -76,8 +75,67 @@ function AdminUsersList() {
     });
     setRecords(newData);
   };
+
+  //export csv
+  function convertArrayOfObjectsToCSV(array) {
+    let result;
+
+    const columnDelimiter = ",";
+    const lineDelimiter = "\n";
+    const keys = Object.keys(data[0]);
+
+    result = "";
+    result += keys.join(columnDelimiter);
+    result += lineDelimiter;
+
+    array.forEach((item) => {
+      let ctr = 0;
+      keys.forEach((key) => {
+        if (ctr > 0) result += columnDelimiter;
+
+        result += item[key];
+
+        ctr++;
+      });
+      result += lineDelimiter;
+    });
+
+    return result;
+  }
+
+  // Blatant "inspiration" from https://codepen.io/Jacqueline34/pen/pyVoWr
+  function downloadCSV(array) {
+    const link = document.createElement("a");
+    let csv = convertArrayOfObjectsToCSV(array);
+    if (csv == null) return;
+
+    const filename = "export.csv";
+
+    if (!csv.match(/^data:text\/csv/i)) {
+      csv = `data:text/csv;charset=utf-8,${csv}`;
+    }
+
+    link.setAttribute("href", encodeURI(csv));
+    link.setAttribute("download", filename);
+    link.click();
+  }
+  const Export = ({ onExport }) => (
+    <button
+      style={{ backgroundColor: currentColor, color: "white" }}
+      className="p-1 text-sm w-30 hover:drop-shadow-xl rounded-lg"
+      onClick={(e) => onExport(e.target.value)}
+    >
+      Export
+    </button>
+  );
+
+  const actionsMemo = React.useMemo(
+    () => <Export onExport={() => downloadCSV(data)} />,
+    []
+  );
+
   return (
-    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+    <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl min-h-screen">
       <Header category="" title="Users List" />
       <div>
         <input
@@ -91,6 +149,7 @@ function AdminUsersList() {
         columns={columns}
         data={records}
         progressPending={loading}
+        actions={actionsMemo}
         pagination
       />
     </div>

@@ -5,4 +5,6 @@ export { default as Footer } from "./Layout/Footer";
 export { default as Navbar } from "./Layout/Navbar";
 export { default as UserProfile } from "./Layout/UserProfile";
 export { default as AccountActivation } from "./AccountActivation";
+export { default as UploadFile } from "./UploadFile";
+export { default as ConnectDB } from "./ConnectDB";
 export { default as Button } from "./Layout/Button";
