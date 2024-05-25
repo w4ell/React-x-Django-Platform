@@ -15,16 +15,21 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
   const loading = useSelector((state) => state.user.loading);
-  const error = useSelector((state) => state.user.error);
+  const err = useSelector((state) => state.user.error);
+  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (email && password) {
+      setError(err);
+    }
+  }, [err]);
   useEffect(() => {
     const accessToken = localStorage.getItem("access");
     if (accessToken) {
       dispatch(loadUser()).then(() => {
         if (isAuthenticated) {
-          navigate("/dashboard");
+          navigate("/insert-data");
         } else if (isAdminAuthenticated) {
           navigate("/admin-dashboard");
         }

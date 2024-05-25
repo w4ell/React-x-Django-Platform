@@ -264,3 +264,37 @@ export const adminDeleteUser = (id) => async (dispatch) => {
     dispatch(userActions.DeleteUserFail(error.message));
   }
 };
+
+export const uploadFile = (formData) => async (dispatch) => {
+  try {
+    dispatch(userActions.UploadFileRequest());
+    const response = await axios.post(`${server}/api/user/upload/`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        Authorization: `JWT ${localStorage.getItem("access")}`,
+      },
+    });
+    dispatch(userActions.UploadFileSuccess(response.data.charts));
+  } catch (error) {
+    dispatch(userActions.UploadFileFail(error.message));
+  }
+};
+
+export const connectDB = (formData) => async (dispatch) => {
+  try {
+    dispatch(userActions.ConnectDatabaseRequest());
+    const response = await axios.post(
+      `${server}/api/user/database/`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      }
+    );
+    dispatch(userActions.ConnectDatabaseSuccess(response.data.charts));
+  } catch (error) {
+    dispatch(userActions.ConnectDatabaseFail(error.message));
+  }
+};

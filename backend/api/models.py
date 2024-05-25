@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from django.utils import timezone
 
 class UserAccountManager(BaseUserManager):
     def create_user(self, email, full_name, birth_date, password=None):
@@ -19,8 +20,13 @@ class UserAccount(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     birth_date = models.DateField(null=True)
+<<<<<<< HEAD
     
     objects = UserAccountManager() #une instance qui signifie que les méthodes définies dans UserAccountManager seront disponibles pour les instances de ce modèle.
+=======
+    created_at = models.DateTimeField(default=timezone.now)  
+    objects = UserAccountManager()
+>>>>>>> main
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['full_name', 'is_admin', 'birth_date']

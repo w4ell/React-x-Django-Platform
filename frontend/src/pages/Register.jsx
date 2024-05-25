@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../redux/features/user/userThunks";
@@ -7,6 +7,11 @@ import { Navbar, Footer } from "../components/Home";
 
 function Register() {
   const error = useSelector((state) => state.user.error);
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const isAdminAuthenticated = useSelector(
+    (state) => state.user.isAdminAuthenticated
+  );
+  const navigate = useNavigate();
   const [full_name, setFull_name] = useState("");
   const [email, setEmail] = useState("");
   const [birth_date, setBirth_date] = useState("");
@@ -22,10 +27,12 @@ function Register() {
     setSubmit(true);
   };
   useEffect(() => {
-    if ((error === "" && submit) || (error === null && submit)) {
-      setShow(true);
+    if (isAdminAuthenticated) {
+      navigate("/admin-dashboard");
+    } else if (isAuthenticated) {
+      navigate("/insert-data");
     }
-  }, [error]);
+  }, []);
   return (
     <div className="body flex flex-col w-full h-full min-h-screen">
       <div className="flex-none">

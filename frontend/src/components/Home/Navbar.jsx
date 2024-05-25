@@ -1,13 +1,21 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 
 import companyLogo from "../../assets/images/logo1.png";
+=======
+import { useSelector } from "react-redux";
+import companyLogo from "../../assets/images/logo.svg";
+>>>>>>> main
 import { SiShopware } from "react-icons/si";
 
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-
+  const isAuthenticated = useSelector((state) => state.user.isAuthenticated);
+  const isAdminAuthenticated = useSelector(
+    (state) => state.user.isAdminAuthenticated
+  );
   return (
     <nav className="relative container mx-auto p-6">
       {/* Flex Container */}
@@ -45,7 +53,9 @@ const Navbar = () => {
           to="/register"
           className="hidden p-3 px-6 pt-2 text-white bg-[#F25E3D] rounded-full baseline hover:bg-[#f07c62] md:block"
         >
-          Get Started
+          {isAuthenticated || isAdminAuthenticated
+            ? "Dashboard"
+            : "Get Started"}
         </Link>
 
         {/* Hamburger Icon */}
