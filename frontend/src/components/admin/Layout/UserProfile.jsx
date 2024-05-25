@@ -38,7 +38,10 @@ const UserProfile = () => {
         </div>
       </div>
       <div>
-        <div className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]">
+        <Link
+          to="/profile"
+          className="flex gap-5 border-b-1 border-color p-4 hover:bg-light-gray cursor-pointer  dark:hover:bg-[#42464D]"
+        >
           <button
             type="button"
             className=" text-3xl rounded-lg p-3 hover:bg-light-gray"
@@ -52,7 +55,7 @@ const UserProfile = () => {
               Account Settings
             </p>
           </div>
-        </div>
+        </Link>
       </div>
       <div className="mt-5">
         <button
