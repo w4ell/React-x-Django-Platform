@@ -30,7 +30,7 @@ function Register() {
     if (isAdminAuthenticated) {
       navigate("/admin-dashboard");
     } else if (isAuthenticated) {
-      navigate("/dashboard");
+      navigate("/insert-data");
     }
   }, []);
   return (

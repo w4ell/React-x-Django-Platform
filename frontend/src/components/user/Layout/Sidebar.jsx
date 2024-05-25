@@ -8,16 +8,6 @@ import { IoBarChartSharp } from "react-icons/io5";
 import { useStateContext } from "../../../context/ContextProvider";
 export const links = [
   {
-    title: "",
-    links: [
-      {
-        name: "Dashboard",
-        path: "dashboard",
-        icon: <MdDashboard />,
-      },
-    ],
-  },
-  {
     title: "Data visualization",
     links: [
       {

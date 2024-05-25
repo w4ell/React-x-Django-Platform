@@ -29,7 +29,7 @@ const Login = () => {
     if (accessToken) {
       dispatch(loadUser()).then(() => {
         if (isAuthenticated) {
-          navigate("/dashboard");
+          navigate("/insert-data");
         } else if (isAdminAuthenticated) {
           navigate("/admin-dashboard");
         }
