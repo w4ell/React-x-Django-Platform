@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-
-import companyLogo from "../../assets/images/logo1.png";
-=======
 import { useSelector } from "react-redux";
 import companyLogo from "../../assets/images/logo.svg";
->>>>>>> main
 import { SiShopware } from "react-icons/si";
 
 

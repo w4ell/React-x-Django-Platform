@@ -61,8 +61,4 @@ npm install
 
 npm run dev
 
-<div align="center">
-Made by Wael Ben Mohamed
-<i>Contact: waelbm2005@gmail.com</i><br>
 
-</div>

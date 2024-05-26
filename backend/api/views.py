@@ -1,6 +1,6 @@
-from rest_framework.views import APIView #pour créer des vues API personnalisées(Get,Put..)
-from rest_framework.response import Response #pour renvoyer des réponses HTTP à partir des vues API
-from rest_framework import status, generics #generics fournit des vues API génériques préconstruites pour effectuer des opérations CRUD
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status, generics
 from .serializers import UserProfileUpdateSerializer, UserSerializer
 from .models import UserAccount
 from .permissions import IsAdminCheck
@@ -19,7 +19,7 @@ import psycopg2
 import mysql.connector
 from datetime import timedelta
 from django.utils import timezone 
-
+from sqlalchemy import create_engine
 
 
 class UserProfileUpdateView(APIView):
@@ -52,7 +52,7 @@ class DashboardStats(APIView):
         return Response(data)
 
     def get_new_users_per_day(self, start_date, end_date):
-        new_users_per_day = UserAccount.objects.filter(created_at__date__range=[start_date, end_date]) \
+        new_users_per_day = UserAccount.objects.filter(created_at__range=[start_date, end_date]) \
             .annotate(day=TruncDay('created_at')) \
             .values('day') \
             .annotate(count=Count('id')) \
@@ -73,7 +73,6 @@ class DashboardStats(APIView):
         new_users_data = [{'day': date, 'count': count} for date, count in new_users_data]
 
         return new_users_data
-
 class UserListView(generics.ListAPIView):
     queryset = UserAccount.objects.all()
     serializer_class = UserSerializer
@@ -120,9 +119,6 @@ class AdminUserDeleteView(generics.DestroyAPIView):
         instance = self.get_object()
         instance.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-<<<<<<< HEAD
-        
-=======
 
 
 def generate_charts(df):
@@ -207,31 +203,22 @@ class UserDatabaseView(generics.GenericAPIView):
                 temp_file_path = 'temp.sqlite'
 
                 # Write uploaded file to a temporary file
-                with open('temp.sqlite', 'wb+') as temp_file:
+                with open(temp_file_path, 'wb+') as temp_file:
                     for chunk in file.chunks():
                         temp_file.write(chunk)
                 # Connect to the temporary SQLite database file
-                conn = sqlite3.connect('temp.sqlite')
+                conn = sqlite3.connect(temp_file_path)
+                df = pd.read_sql_query(f"SELECT * FROM {table}", conn)
+                conn.close()
             elif db_type == 'mysql':
-                conn = mysql.connector.connect(
-                    host=host,
-                    port=port,
-                    database=dbname,
-                    user=user,
-                    password=password
-                )
+                engine = create_engine(f'mysql+mysqlconnector://{user}:{password}@{host}:{port}/{dbname}')
+                df = pd.read_sql_query(f"SELECT * FROM {table}", engine)
             elif db_type == 'postgresql':
-                conn = psycopg2.connect(
-                    dbname=dbname,
-                    user=user,
-                    password=password,
-                    host=host,
-                    port=port
-                )
+                engine = create_engine(f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}')
+                df = pd.read_sql_query(f"SELECT * FROM {table}", engine)
             else:
                 return Response({'error': 'Unsupported database type'}, status=status.HTTP_400_BAD_REQUEST)
 
-            df = pd.read_sql_query(f"SELECT * FROM {table}", conn)
             # Convert columns to numeric if possible
             numeric_columns = df.select_dtypes(include='object').columns
             for col in numeric_columns:
@@ -243,12 +230,10 @@ class UserDatabaseView(generics.GenericAPIView):
             # Generate charts
             charts_base64 = generate_charts(df)
             
-            # Close the database connection
-            conn.close()
             # Delete temporary file
-            if os.path.exists(temp_file_path):
+            if db_type == 'sqlite' and os.path.exists(temp_file_path):
                 os.remove(temp_file_path)
+            print(df)    
             return Response({'charts': charts_base64}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
->>>>>>> main

@@ -2,13 +2,10 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { SiShopware } from "react-icons/si";
 import { MdOutlineCancel, MdDashboard, MdManageAccounts } from "react-icons/md";
-<<<<<<< HEAD
-import companyLogo from "../../../assets/images/logo1.png";
-=======
 import { AiFillDatabase } from "react-icons/ai";
 import { IoBarChartSharp } from "react-icons/io5";
+import companyLogo from "../../../assets/images/logo1.png";
 
->>>>>>> main
 import { useStateContext } from "../../../context/ContextProvider";
 export const links = [
   {
